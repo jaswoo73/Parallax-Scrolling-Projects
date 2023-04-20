@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parallax Scrolling Website | Experiment </title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header id="header">
+        <a href="#" class="logo">Jungle</a>
+        <ul>
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Credit</a></li>
+        </ul>
+    </header>
+    <section id="sect">
+        <h2 id="text"><span>It's time for a new</span><br>Adventure</h2>
+        <img src="Parallax/bird1.png" alt="Bird1" id="bird1">
+        <img src="Parallax/bird2.png" alt="Bird2" id="bird2">
+        <a href="#" id="btn">Explore</a>
+        <img src="Parallax/rocks.png" alt="rocks" id="rocks">
+        <img src="Parallax/forest.png" alt="forest" id="forest">
+        <img src="Parallax/water.png" alt="water" id="water">
+    </section>
+    <div class="sec">
+        <h2>Parallax Scrolling Effect</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas repellat recusandae quisquam, dolorum
+            praesentium dolores quibusdam laudantium iste? Praesentium eum, maiores vel nam saepe libero dicta deleniti
+            quis minus ullam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, cumque quia numquam
+            optio facilis illum deserunt debitis? Inventore vel fugiat rem doloremque, mollitia placeat culpa,
+            aspernatur, illo explicabo sequi minus? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
+            rerum magni at earum, officiis numquam harum provident quod molestias. Blanditiis temporibus, distinctio
+            modi enim odio ipsa rerum itaque quam necessitatibus! Lorem ipsum dolor sit amet consectetur adipisicing
+            elit. Esse facilis, consequatur cum et laborum rem natus? Laudantium dolore totam delectus rem doloremque
+            ratione perferendis, vel autem, distinctio officiis veniam vero?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia placeat quam expedita aut repellendus
+            exercitationem ipsam repellat ullam ab facere, quas optio. Omnis modi adipisci quibusdam deserunt sequi,
+            iste alias. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi quam, veritatis aut cumque
+            ipsa pariatur voluptates quo fugiat molestias nostrum suscipit molestiae, modi voluptatibus cum veniam nulla
+            quos inventore corporis! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel esse perferendis
+            expedita ex velit cumque sapiente nesciunt aspernatur natus nulla voluptates culpa veniam aliquam eveniet
+            nostrum molestias excepturi, illum explicabo? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui
+            nemo, odio, maiores saepe ipsam possimus reiciendis sequi corrupti odit perferendis eveniet adipisci
+            dolorem, error ullam. Reiciendis enim ratione at ab. Lorem ipsum dolor sit amet, consectetur adipisicing
+            elit. Accusamus eveniet distinctio est laboriosam corrupti quisquam fugiat repellat cupiditate autem
+            tempora. Fugiat id tempora pariatur laudantium libero! Dolorum aliquam officia ipsam. Lorem ipsum dolor sit
+            amet, consectetur adipisicing elit. Nisi et odit magni quia nulla consequuntur possimus impedit aperiam! Vel
+            id facere sequi tenetur nam quasi illum sed itaque. Aperiam, et?
+        </p>
+        <footer>Image Source : https://www.freepik.com
+            All credit goes to the original creator of this
+            Tree vector created by brgfx
+            Link : https://www.freepik.com/free-vector/natural-environment-lanscape-scene_5837826.htm
+        </footer>
+    </div>
+
+
+    <script>
+        let text = document.getElementById('text');
+        let bird = document.getElementById('bird');
+        let jungle = document.getElementById('jungle');
+        let waterfall = document.getElementById('waterfall');
+        let header = document.getElementById('header');
+        let section = document.getElementById('sect');
+
+        window.addEventListener('scroll', function () {
+            let value = window.scrollY;
+
+            // adjust the top position based on the scroll position
+
+            if (value >= 5) {
+                // set the top position to its default value
+                text.style.zIndex = 40;
+                text.style.top = 35 + value * -0.3 + '%';
+            } else if (value <= 0) {
+                text.style.top = '50%';
+                text.style.zIndex = -1;
+            }
+            bird1.style.top = value * -0.7 + 'px';
+            bird1.style.left = value * 2 + 'px';
+            bird2.style.top = value * -0.7 + 'px';
+            bird2.style.left = value * -5 + 'px';
+            btn.style.marginTop = value * 1.5 + 'px';
+            rocks.style.top = value * -0.12 + 'px';
+            forest.style.top = value * 0.25 + 'px';
+            header.style.top = value * -0.12 + 'px';
+            if (value > 20) {
+                forest.style.filter = "brightness(50%) contrast(150%)";
+            } else {
+                forest.style.filter = 'none';
+            }
+
+            if (value > 20) {
+                // calculate the R, G, and B values based on the scroll position
+                let r = 255 - Math.floor((value - 20) * 2.55);
+                let g = 255 - Math.floor((value - 20) * 2.55);
+                let b = 255 - Math.floor((value - 20) * 2.55);
+
+                section.style.background = 'rgb(' + r + ',' + g + ',' + b + ')';
+            } else {
+                section.style.background = 'none';
+            }
+        })
+    </script>
+</body>
+
+</html>
