@@ -223,12 +223,6 @@
             Numquam nihil, quo accusantium asperiores autem earum.
             Exercitationem incidunt veniam numquam voluptates amet non voluptatibus nemo voluptate perferendis ducimus?
             Consequuntur, ipsam provident. Vel tempora expedita aliquam optio.
-            Fugit rem quia possimus eos veniam minima magni dolorem nam cum cupiditate dicta perferendis et, magnam
-            placeat iste laudantium incidunt?
-            Rerum sunt commodi laudantium maiores ea voluptatum. Incidunt qui odit, reprehenderit, amet adipisci minus
-            accusamus sit ea harum suscipit eum.
-            Nulla, libero alias quod totam dicta architecto deserunt illo neque eveniet sit, eligendi perferendis iste
-            eius nisi repudiandae expedita delectus.
         </p>
         <footer>Image Source : https://www.freepik.com
             All credit goes to the original creator of this
@@ -239,12 +233,17 @@
 
 
     <script>
-        let text = document.getElementById('text');
-        let bird = document.getElementById('bird');
-        let jungle = document.getElementById('jungle');
-        let waterfall = document.getElementById('waterfall');
-        let header = document.getElementById('header');
-        let section = document.getElementById('sect');
+        const header = document.querySelector('#header');
+        const text = document.querySelector('#text');
+        const bird1 = document.querySelector('#bird1');
+        const bird2 = document.querySelector('#bird2');
+        const btn = document.querySelector('#btn');
+        const rocks = document.querySelector('#rocks');
+        const forest = document.querySelector('#forest');
+        const waterfall = document.querySelector('#water');
+        const section = document.querySelector('#sect');
+
+
 
         window.addEventListener('scroll', function () {
             let value = window.scrollY;
@@ -253,7 +252,7 @@
             if (value >= 5 && value < window.innerHeight) {
                 // set the top position to its default value
                 text.style.zIndex = 0;
-                text.style.top = 35 + value * -0.3 + '%';
+                text.style.top = 35 + value * -0.2 + '%';
                 bird1.style.top = value * -0.7 + 'px';
                 bird1.style.left = value * 2 + 'px';
                 bird2.style.top = value * -0.7 + 'px';
@@ -262,34 +261,19 @@
                 rocks.style.top = value * -0.12 + 'px';
                 forest.style.top = value * 0.25 + 'px';
                 header.style.top = value * -0.12 + 'px';
-                waterfall.style.top = value * -0.02 + "px";
-                if (value > 20) {
-                    jungle.style.filter = "brightness(50%) contrast(150%)";
-                    // calculate the R, G, and B values based on the scroll position
-                    let r = 255 - Math.floor((value - 20) * 2.55);
-                    let g = 255 - Math.floor((value - 20) * 2.55);
-                    let b = 255 - Math.floor((value - 20) * 2.55);
+                waterfall.style.top = value * -0.02 + 'px';
 
-                    section.style.background = 'rgb(' + r + ',' + g + ',' + b + ')';
-                } else {
-                    forest.style.filter = 'none';
-                    section.style.background = 'none';
+                if (value >= 10) {
+                    // calculate the R, G, and B values based on the scroll position
+                    const r = 255 - Math.floor((value - 20) * 2.55);
+                    const g = 255 - Math.floor((value - 20) * 2.55);
+                    const b = 255 - Math.floor((value - 20) * 2.55);
+                    const brightness = 100 - Math.floor((value * 0.35))
+                    const contrast = 100 - Math.floor((value * 0.1))
+                    sect.style.background = `rgb(${r},${g},${b})`;
+                    forest.style.filter = `brightness(${brightness}%) contrast(${contrast}%)`;
                 }
             }
-            // else if (value > maxScroll) {
-            //     // if the user has scrolled beyond the end of the page, reset the styles to their default values
-            //     text.style.top = '35%';
-            //     text.style.zIndex = 0;
-            //     bird1.style.top = '0';
-            //     bird1.style.left = '0';
-            //     bird2.style.top = '0';
-            //     bird2.style.left = '0';
-            //     btn.style.marginTop = '0';
-            //     rocks.style.top = '0';
-            //     forest.style.top = '0';
-            //     header.style.top = '0';
-            //     forest.style.filter = 'none';
-            // }
         })
     </script>
 </body>
